@@ -17,6 +17,7 @@ import Resources from "@/pages/Resources";
 import Blog from "@/pages/Blog";
 import BlogPost from "@/pages/BlogPost";
 import Contact from "@/pages/Contact";
+import BrandHotels from "@/pages/BrandHotels";
 import NavigationDemo from "@/pages/NavigationDemo";
 import NotFound from "@/pages/not-found";
 
@@ -36,6 +37,7 @@ function Router() {
       <Route path="/blog" component={Blog} />
       <Route path="/blog/:slug" component={BlogPost} />
       <Route path="/contact" component={Contact} />
+      <Route path="/brand-hotels" component={BrandHotels} />
       <Route path="/navigation-demo" component={NavigationDemo} />
       <Route component={NotFound} />
     </Switch>

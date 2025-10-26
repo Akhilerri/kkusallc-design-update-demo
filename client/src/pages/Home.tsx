@@ -16,50 +16,29 @@ import { useHomeSEO } from "@/hooks/useSEO";
 // Quick navigation cards for main sections
 const sectionCards = [
   {
-    title: "About Us",
-    description: "Learn about our company history, team, and values",
+    title: "Company Profile",
+    description: "Learn about KK USA LLC's background and expertise as an FF&E supplier",
     icon: Building2,
     href: "/about",
     color: "text-blue-600"
   },
   {
-    title: "Services",
-    description: "Manufacturing, Interior Design, Procurement & Project Management",
-    icon: Palette,
-    href: "/services",
-    color: "text-green-600"
-  },
-  {
-    title: "Products",
-    description: "Browse our comprehensive catalog of furniture and fixtures",
-    icon: Package,
-    href: "/products",
-    color: "text-purple-600"
-  },
-  {
-    title: "Portfolio",
-    description: "View our completed projects and case studies",
+    title: "Our Projects",
+    description: "View our completed hotel FF&E projects and case studies",
     icon: FolderOpen,
     href: "/portfolio",
     color: "text-orange-600"
   },
   {
-    title: "Process",
-    description: "Understand how we work and what to expect",
-    icon: Settings,
-    href: "/process",
-    color: "text-teal-600"
+    title: "Brand Hotels",
+    description: "Explore the hotel brands we work with: IHG, Hilton, Marriott, Best Western, Choice Hotels",
+    icon: Building2,
+    href: "/brand-hotels",
+    color: "text-purple-600"
   },
   {
-    title: "Resources",
-    description: "Access our blog, insights, and downloadable guides",
-    icon: BookOpen,
-    href: "/resources",
-    color: "text-indigo-600"
-  },
-  {
-    title: "Contact",
-    description: "Get in touch for consultations and quotes",
+    title: "Contact Us",
+    description: "Get in touch for FF&E supply inquiries and project consultations",
     icon: Phone,
     href: "/contact",
     color: "text-red-600"
@@ -87,8 +66,8 @@ export default function Home() {
             {sectionCards.map((card) => {
               const Icon = card.icon;
               return (
-                <Card key={card.href} className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1 touch-manipulation">
-                  <CardHeader className="pb-3 p-4 sm:p-6">
+                <Card key={card.href} className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1 touch-manipulation flex flex-col h-full">
+                  <CardHeader className="pb-3 p-4 sm:p-6 flex-grow">
                     <div className="flex items-center gap-3 mb-2">
                       <Icon className={`h-5 w-5 sm:h-6 sm:w-6 ${card.color}`} />
                       <CardTitle className="text-base sm:text-lg">{card.title}</CardTitle>
@@ -97,7 +76,7 @@ export default function Home() {
                       {card.description}
                     </CardDescription>
                   </CardHeader>
-                  <CardContent className="pt-0 p-4 sm:p-6">
+                  <CardContent className="pt-0 p-4 sm:p-6 mt-auto">
                     <Button asChild variant="ghost" className="w-full justify-between group-hover:bg-primary group-hover:text-primary-foreground transition-colors text-sm">
                       <Link href={card.href}>
                         Learn More

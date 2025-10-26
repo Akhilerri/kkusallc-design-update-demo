@@ -12,7 +12,7 @@ import { Label } from '../ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
 import { Checkbox } from '../ui/checkbox';
 import { Alert, AlertDescription } from '../ui/alert';
-import { Loader2, CheckCircle, Send, AlertCircle } from 'lucide-react';
+import { Loader2, CheckCircle, Send, AlertCircle, Mail } from 'lucide-react';
 import { useContactForm } from '../../hooks/useContact';
 
 interface ContactFormProps {
@@ -120,7 +120,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ onSuccess, className =
           {/* Basic Information */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="name" className="text-sm font-medium">Full Name *</Label>
+              <Label htmlFor="name" className="text-sm font-medium">Name *</Label>
               <Input
                 id="name"
                 {...register('name')}
@@ -137,27 +137,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ onSuccess, className =
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="email" className="text-sm font-medium">Email Address *</Label>
-              <Input
-                id="email"
-                type="email"
-                {...register('email')}
-                placeholder="your.email@example.com"
-                className={`h-11 ${errors.email ? 'border-red-500 focus:border-red-500' : touchedFields.email && !errors.email ? 'border-green-500' : ''}`}
-                onBlur={() => trigger('email')}
-              />
-              {errors.email && (
-                <p className="text-xs text-red-500 flex items-center gap-1">
-                  <AlertCircle className="h-3 w-3" />
-                  {errors.email.message}
-                </p>
-              )}
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className="space-y-2">
-              <Label htmlFor="phone" className="text-sm font-medium">Phone Number</Label>
+              <Label htmlFor="phone" className="text-sm font-medium">Phone Number *</Label>
               <Input
                 id="phone"
                 type="tel"
@@ -173,126 +153,53 @@ export const ContactForm: React.FC<ContactFormProps> = ({ onSuccess, className =
                 </p>
               )}
             </div>
+          </div>
 
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="company" className="text-sm font-medium">Company (Optional)</Label>
+              <Label htmlFor="email" className="text-sm font-medium">Email *</Label>
               <Input
-                id="company"
-                {...register('company')}
-                placeholder="Your company name"
-                className="h-11"
+                id="email"
+                type="email"
+                {...register('email')}
+                placeholder="your.email@example.com"
+                className={`h-11 ${errors.email ? 'border-red-500 focus:border-red-500' : touchedFields.email && !errors.email ? 'border-green-500' : ''}`}
+                onBlur={() => trigger('email')}
               />
-            </div>
-          </div>
-
-          {/* Project Details */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className="space-y-2">
-              <Label htmlFor="projectType" className="text-sm font-medium">Project Type</Label>
-              <Select onValueChange={(value) => setValue('projectType', value as ProjectType)}>
-                <SelectTrigger className="h-11">
-                  <SelectValue placeholder="Select project type" />
-                </SelectTrigger>
-                <SelectContent>
-                  {projectTypeOptions.map((option) => (
-                    <SelectItem key={option.value} value={option.value}>
-                      {option.label}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+              {errors.email && (
+                <p className="text-xs text-red-500 flex items-center gap-1">
+                  <AlertCircle className="h-3 w-3" />
+                  {errors.email.message}
+                </p>
+              )}
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="budget" className="text-sm font-medium">Budget Range</Label>
-              <Select onValueChange={(value) => setValue('budget', value as BudgetRange)}>
-                <SelectTrigger className="h-11">
-                  <SelectValue placeholder="Select budget range" />
-                </SelectTrigger>
-                <SelectContent>
-                  {budgetOptions.map((option) => (
-                    <SelectItem key={option.value} value={option.value}>
-                      {option.label}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+              <Label htmlFor="message" className="text-sm font-medium">Subject *</Label>
+              <Input
+                id="subject"
+                {...register('message')}
+                placeholder="What can we help you with?"
+                className={`h-11 ${errors.message ? 'border-red-500 focus:border-red-500' : touchedFields.message && !errors.message ? 'border-green-500' : ''}`}
+                onBlur={() => trigger('message')}
+              />
+              {errors.message && (
+                <p className="text-xs text-red-500 flex items-center gap-1">
+                  <AlertCircle className="h-3 w-3" />
+                  {errors.message.message}
+                </p>
+              )}
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className="space-y-2">
-              <Label htmlFor="timeline" className="text-sm font-medium">Project Timeline</Label>
-              <Select onValueChange={(value) => setValue('timeline', value as TimelineRange)}>
-                <SelectTrigger className="h-11">
-                  <SelectValue placeholder="Select timeline" />
-                </SelectTrigger>
-                <SelectContent>
-                  {timelineOptions.map((option) => (
-                    <SelectItem key={option.value} value={option.value}>
-                      {option.label}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="preferredContact" className="text-sm font-medium">Preferred Contact Method</Label>
-              <Select onValueChange={(value) => setValue('preferredContact', value as PreferredContactMethod)}>
-                <SelectTrigger className="h-11">
-                  <SelectValue placeholder="How should we contact you?" />
-                </SelectTrigger>
-                <SelectContent>
-                  {contactMethodOptions.map((option) => (
-                    <SelectItem key={option.value} value={option.value}>
-                      {option.label}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
-          </div>
-
-          {/* Message */}
-          <div className="space-y-2">
-            <Label htmlFor="message" className="text-sm font-medium">Project Details *</Label>
-            <Textarea
-              id="message"
-              {...register('message')}
-              placeholder="Tell us about your project, requirements, and any specific questions you have..."
-              rows={4}
-              className={`min-h-[100px] resize-y ${errors.message ? 'border-red-500 focus:border-red-500' : touchedFields.message && !errors.message ? 'border-green-500' : ''}`}
-              onBlur={() => trigger('message')}
-            />
-            {errors.message && (
-              <p className="text-xs text-red-500 flex items-center gap-1">
-                <AlertCircle className="h-3 w-3" />
-                {errors.message.message}
-              </p>
-            )}
-            <p className="text-xs text-muted-foreground">
-              {watch('message')?.length || 0} characters (minimum 10 required)
-            </p>
-          </div>
-
-          {/* Marketing Consent */}
-          <div className="flex items-start space-x-2">
-            <Checkbox
-              id="marketingConsent"
-              checked={watch('marketingConsent')}
-              onCheckedChange={(checked) => setValue('marketingConsent', !!checked)}
-            />
-            <div className="grid gap-1.5 leading-none">
-              <Label
-                htmlFor="marketingConsent"
-                className="text-sm font-normal cursor-pointer"
-              >
-                I'd like to receive updates about new products, services, and design insights
-              </Label>
-              <p className="text-xs text-muted-foreground">
-                You can unsubscribe at any time. We respect your privacy.
-              </p>
+          {/* Office Email Display */}
+          <div className="p-4 bg-muted/50 rounded-lg border border-border">
+            <div className="flex items-center gap-2 text-sm">
+              <Mail className="h-4 w-4 text-primary" />
+              <span className="font-medium">Our Office Email:</span>
+              <a href="mailto:office@kkusallc.com" className="text-primary hover:underline">
+                office@kkusallc.com
+              </a>
             </div>
           </div>
 

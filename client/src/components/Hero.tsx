@@ -1,9 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Mail, ArrowUpRight } from "lucide-react";
-// High-quality luxury hotel lobby image
-const heroImage = "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80";
-const heroImageFallback = "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80";
+// High-quality luxury hotel room image - elegant upscale hotel bedroom with premium FF&E
+const heroImage = "https://images.unsplash.com/photo-1590490360182-c33d57733427?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80";
+const heroImageFallback = "https://images.unsplash.com/photo-1618773928121-c32242e63f39?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80";
 
 export function Hero() {
   return (
@@ -18,15 +18,15 @@ export function Hero() {
 
             <div>
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-light text-foreground mb-4 sm:mb-6 leading-[1.1]">
-                Exceptional Design for a
+                Premium FF&E Solutions for
                 <br className="hidden sm:block" />
-                <span className="text-primary font-normal">Better Tomorrow</span>
+                <span className="text-primary font-normal">Hospitality Excellence</span>
               </h1>
 
               <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-xl leading-relaxed">
-                Elevate your interior design projects with our sleek,
-                customizable solutions built to showcase your creative work and
-                captivate clients at first glance.
+                Your trusted supplier of Furniture, Fixtures & Equipment for hotels. 
+                We source and supply quality FF&E to bring your hotel vision to life, 
+                working with leading brands like Hilton, IHG, and Marriott.
               </p>
             </div>
 
@@ -62,7 +62,7 @@ export function Hero() {
               <Button
                 size="lg"
                 asChild
-                className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-xl w-full flex items-center justify-center gap-2"
+                className="bg-[#6D2239] hover:bg-[#4D1829] text-white font-bold py-4 px-8 rounded-xl w-full flex items-center justify-center gap-2 transition-colors"
                 data-testid="button-get-started-mobile"
               >
                 <a href="#quote" className="flex items-center gap-2">
@@ -83,7 +83,7 @@ export function Hero() {
             <div className="relative rounded-lg overflow-hidden shadow-2xl">
               <img
                 src={heroImage}
-                alt="Luxury hotel interior design"
+                alt="Luxury hotel room with premium FF&E furnishings"
                 className="w-full h-full object-cover"
                 loading="eager"
                 onError={(e) => {

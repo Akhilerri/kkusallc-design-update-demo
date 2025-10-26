@@ -185,8 +185,8 @@ export default function About() {
             </div>
             <div className="relative">
               <img
-                src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=800&q=80"
-                alt="Luxury hotel lobby showcasing our design excellence"
+                src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=800&q=80"
+                alt="Luxury hotel room with premium FF&E furnishings"
                 className="rounded-lg shadow-lg w-full"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-lg" />
@@ -229,8 +229,8 @@ export default function About() {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="relative">
               <img
-                src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600&h=400&fit=crop"
-                alt="Karan Kothari USA LLC team at work"
+                src="https://images.unsplash.com/photo-1631049552240-59c37f38802b?w=600&h=400&fit=crop&q=80"
+                alt="Elegant hotel bedroom showcasing quality FF&E"
                 className="rounded-lg shadow-lg w-full"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-lg" />

@@ -4,11 +4,9 @@ import { Menu, Sun, Moon, ChevronDown, Globe, X, Mail, ArrowUpRight } from "luci
 import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
-  NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-  NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 import {
   DropdownMenu,
@@ -25,32 +23,16 @@ import { cn } from "@/lib/utils";
 // Business website navigation structure
 const businessNavigation: NavigationItem[] = [
   {
-    label: "Portfolio",
-    href: "/portfolio",
-  },
-  {
-    label: "Services",
-    href: "/services",
-  },
-  {
     label: "About Us",
     href: "/about",
   },
   {
-    label: "Process",
-    href: "/process",
+    label: "Projects",
+    href: "/portfolio",
   },
   {
-    label: "Resources",
-    href: "/resources",
-    children: [
-      { label: "Blog & Insights", href: "/blog" },
-      { label: "Downloadable Guides", href: "/resources" },
-    ],
-  },
-  {
-    label: "Contact",
-    href: "/contact",
+    label: "Brand Hotels",
+    href: "/brand-hotels",
   },
 ];
 
@@ -63,72 +45,6 @@ const languages = [
   { code: "it", name: "Italiano", flag: "🇮🇹" },
   { code: "pt", name: "Português", flag: "🇵🇹" },
 ];
-
-interface DesktopNavigationProps {
-  items: NavigationItem[];
-  isActiveItem: (item: NavigationItem) => boolean;
-}
-
-function DesktopNavigation({ items, isActiveItem }: DesktopNavigationProps) {
-  return (
-    <NavigationMenu>
-      <NavigationMenuList className="gap-8">
-        {items.map((item) => (
-          <NavigationMenuItem key={item.href}>
-            {item.children ? (
-              <>
-                <NavigationMenuTrigger
-                  className={cn(
-                    "text-sm font-medium transition-colors hover:text-primary bg-transparent px-0 py-0 h-auto",
-                    isActiveItem(item) && "text-primary"
-                  )}
-                >
-                  {item.label}
-                </NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <div className="grid w-[300px] gap-2 p-4">
-                    {item.children.map((child: NavigationItem) => (
-                      <NavigationMenuLink key={child.href} asChild>
-                        <Link
-                          href={child.href}
-                          className={cn(
-                            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-                            isActiveItem(child) && "bg-accent text-accent-foreground"
-                          )}
-                        >
-                          <div className="text-sm font-medium leading-none">
-                            {child.label}
-                          </div>
-                          {child.description && (
-                            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                              {child.description}
-                            </p>
-                          )}
-                        </Link>
-                      </NavigationMenuLink>
-                    ))}
-                  </div>
-                </NavigationMenuContent>
-              </>
-            ) : (
-              <NavigationMenuLink asChild>
-                <Link
-                  href={item.href}
-                  className={cn(
-                    "inline-flex items-center justify-center text-sm font-medium transition-colors hover:text-primary focus:text-primary focus:outline-none",
-                    isActiveItem(item) && "text-primary"
-                  )}
-                >
-                  {item.label}
-                </Link>
-              </NavigationMenuLink>
-            )}
-          </NavigationMenuItem>
-        ))}
-      </NavigationMenuList>
-    </NavigationMenu>
-  );
-}
 
 interface MobileNavigationProps {
   items: NavigationItem[];
@@ -212,10 +128,17 @@ function MobileNavigation({ items, isActiveItem, isOpen, onOpenChange }: MobileN
               <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200 dark:border-gray-700">
                 <Link
                   href="/"
-                  className="text-2xl font-bold text-blue-600 dark:text-blue-400"
+                  className="flex items-center gap-2"
                   onClick={handleClose}
                 >
-                  Karan Kothari USA LLC
+                  <img 
+                    src="/logo.png" 
+                    alt="Karan Kothari USA LLC Logo" 
+                    className="h-8 w-8 object-contain"
+                  />
+                  <span className="text-xl font-bold text-[#6D2239] dark:text-[#8B3A5C]">
+                    Karan Kothari USA LLC
+                  </span>
                 </Link>
                 <Button
                   variant="ghost"
@@ -235,8 +158,8 @@ function MobileNavigation({ items, isActiveItem, isOpen, onOpenChange }: MobileN
                     href="/"
                     onClick={handleClose}
                     className={cn(
-                      "text-lg font-semibold text-center transition-colors text-gray-900 dark:text-gray-100 hover:text-blue-600 dark:hover:text-blue-400",
-                      isActiveItem({ href: "/", label: "Home" }) && "text-blue-600 dark:text-blue-400"
+                      "text-lg font-semibold text-center transition-colors text-gray-900 dark:text-gray-100 hover:text-[#6D2239] dark:hover:text-[#8B3A5C]",
+                      isActiveItem({ href: "/", label: "Home" }) && "text-[#6D2239] dark:text-[#8B3A5C]"
                     )}
                   >
                     HOME
@@ -249,8 +172,8 @@ function MobileNavigation({ items, isActiveItem, isOpen, onOpenChange }: MobileN
                           <button
                             onClick={() => toggleExpanded(item.href)}
                             className={cn(
-                              "text-lg font-semibold transition-colors text-gray-900 dark:text-gray-100 hover:text-blue-600 dark:hover:text-blue-400 flex items-center gap-2",
-                              isActiveItem(item) && "text-blue-600 dark:text-blue-400"
+                              "text-lg font-semibold transition-colors text-gray-900 dark:text-gray-100 hover:text-[#6D2239] dark:hover:text-[#8B3A5C] flex items-center gap-2",
+                              isActiveItem(item) && "text-[#6D2239] dark:text-[#8B3A5C]"
                             )}
                           >
                             {item.label.toUpperCase()}
@@ -269,8 +192,8 @@ function MobileNavigation({ items, isActiveItem, isOpen, onOpenChange }: MobileN
                                   href={child.href}
                                   onClick={handleClose}
                                   className={cn(
-                                    "block text-base font-medium text-gray-600 dark:text-gray-400 transition-colors hover:text-blue-600 dark:hover:text-blue-400",
-                                    isActiveItem(child) && "text-blue-600 dark:text-blue-400"
+                                    "block text-base font-medium text-gray-600 dark:text-gray-400 transition-colors hover:text-[#6D2239] dark:hover:text-[#8B3A5C]",
+                                    isActiveItem(child) && "text-[#6D2239] dark:text-[#8B3A5C]"
                                   )}
                                 >
                                   {child.label}
@@ -284,8 +207,8 @@ function MobileNavigation({ items, isActiveItem, isOpen, onOpenChange }: MobileN
                           href={item.href}
                           onClick={handleClose}
                           className={cn(
-                            "text-lg font-semibold transition-colors text-gray-900 dark:text-gray-100 hover:text-blue-600 dark:hover:text-blue-400",
-                            isActiveItem(item) && "text-blue-600 dark:text-blue-400"
+                            "text-lg font-semibold transition-colors text-gray-900 dark:text-gray-100 hover:text-[#6D2239] dark:hover:text-[#8B3A5C]",
+                            isActiveItem(item) && "text-[#6D2239] dark:text-[#8B3A5C]"
                           )}
                         >
                           {item.label.toUpperCase()}
@@ -304,14 +227,14 @@ function MobileNavigation({ items, isActiveItem, isOpen, onOpenChange }: MobileN
                   <input
                     type="email"
                     placeholder="Enter your email to get started"
-                    className="w-full pl-12 pr-4 py-4 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full pl-12 pr-4 py-4 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#6D2239] focus:border-transparent"
                   />
                 </div>
                 
                 {/* GET STARTED Button */}
                 <Button
                   asChild
-                  className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-xl w-full max-w-[320px] flex items-center justify-center gap-2 text-base"
+                  className="bg-[#6D2239] hover:bg-[#4D1829] text-white font-bold py-4 px-8 rounded-xl w-full max-w-[320px] flex items-center justify-center gap-2 text-base transition-colors"
                   onClick={handleClose}
                 >
                   <Link href="/contact" className="flex items-center gap-2">
@@ -322,12 +245,12 @@ function MobileNavigation({ items, isActiveItem, isOpen, onOpenChange }: MobileN
               </div>
 
               {/* Social media icons at bottom */}
-              <div className="flex items-center justify-center gap-6 px-6 py-4 bg-white dark:bg-gray-900">
+              <div className="flex items-center justify-center gap-6 px-6 py-4 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
                 <a
                   href="https://facebook.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                  className="text-gray-600 dark:text-gray-400 hover:text-[#6D2239] dark:hover:text-[#8B3A5C] transition-colors"
                 >
                   <svg viewBox="0 0 24 24" fill="currentColor" className="h-6 w-6">
                     <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
@@ -338,7 +261,7 @@ function MobileNavigation({ items, isActiveItem, isOpen, onOpenChange }: MobileN
                   href="https://pinterest.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                  className="text-gray-600 dark:text-gray-400 hover:text-[#6D2239] dark:hover:text-[#8B3A5C] transition-colors"
                 >
                   <svg viewBox="0 0 24 24" fill="currentColor" className="h-6 w-6">
                     <path d="M12 0C5.373 0 0 5.372 0 12 0 17.084 3.163 21.426 7.627 23.174c-.105-.949-.2-2.405.042-3.441.219-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.690 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.888-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.357-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12.001 24c6.624 0 11.999-5.373 11.999-12C24 5.372 18.626.001 12.001.001z"/>
@@ -349,7 +272,7 @@ function MobileNavigation({ items, isActiveItem, isOpen, onOpenChange }: MobileN
                   href="https://instagram.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                  className="text-gray-600 dark:text-gray-400 hover:text-[#6D2239] dark:hover:text-[#8B3A5C] transition-colors"
                 >
                   <svg viewBox="0 0 24 24" fill="currentColor" className="h-6 w-6">
                     <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
@@ -392,72 +315,69 @@ export function EnhancedNavigation() {
           <div className="flex items-center">
             <Link
               href="/"
-              className="text-2xl font-bold text-primary hover-elevate px-2 py-1 rounded-md"
+              className="flex items-center gap-3 hover-elevate px-2 py-1 rounded-md"
               data-testid="link-home"
             >
-              Karan Kothari USA LLC
+              <img 
+                src="/logo.png" 
+                alt="Karan Kothari USA LLC Logo" 
+                className="h-10 w-10 object-contain"
+              />
+              <span className="text-2xl font-bold text-primary">
+                Karan Kothari USA LLC
+              </span>
             </Link>
           </div>
 
           {/* Desktop Navigation - Centered */}
           <div className="hidden md:flex flex-1 justify-center">
-            <DesktopNavigation items={businessNavigation} isActiveItem={isActiveItem} />
+            <NavigationMenu>
+              <NavigationMenuList className="gap-8">
+                {/* Home Link */}
+                <NavigationMenuItem>
+                  <NavigationMenuLink asChild>
+                    <Link
+                      href="/"
+                      className={cn(
+                        "inline-flex items-center justify-center text-base font-medium transition-colors hover:text-primary focus:text-primary focus:outline-none px-4",
+                        isActiveItem({ href: "/", label: "Home" }) && "text-primary"
+                      )}
+                    >
+                      Home
+                    </Link>
+                  </NavigationMenuLink>
+                </NavigationMenuItem>
+                
+                {/* Other Navigation Items */}
+                {businessNavigation.map((item) => (
+                  <NavigationMenuItem key={item.href}>
+                    <NavigationMenuLink asChild>
+                      <Link
+                        href={item.href}
+                        className={cn(
+                          "inline-flex items-center justify-center text-base font-medium transition-colors hover:text-primary focus:text-primary focus:outline-none px-4",
+                          isActiveItem(item) && "text-primary"
+                        )}
+                      >
+                        {item.label}
+                      </Link>
+                    </NavigationMenuLink>
+                  </NavigationMenuItem>
+                ))}
+              </NavigationMenuList>
+            </NavigationMenu>
           </div>
 
           {/* Actions */}
           <div className="flex items-center gap-3">
-            {/* Language Dropdown */}
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  className="hidden md:inline-flex text-sm font-medium gap-2 px-4 py-2 min-w-[100px]"
-                  data-testid="button-language"
-                >
-                  <Globe className="h-4 w-4" />
-                  <span>{currentLanguage.flag}</span>
-                  <ChevronDown className="h-3 w-3" />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-48">
-                {languages.map((language) => (
-                  <DropdownMenuItem
-                    key={language.code}
-                    onClick={() => setCurrentLanguage(language)}
-                    className="flex items-center gap-3 cursor-pointer"
-                  >
-                    <span className="text-lg">{language.flag}</span>
-                    <span>{language.name}</span>
-                    {currentLanguage.code === language.code && (
-                      <span className="ml-auto text-primary">✓</span>
-                    )}
-                  </DropdownMenuItem>
-                ))}
-              </DropdownMenuContent>
-            </DropdownMenu>
-
+            {/* Contact Us Button - Desktop */}
             <Button
               asChild
-              className="hidden md:inline-flex text-sm font-medium px-4 py-2 min-w-[100px]"
-              data-testid="button-contact-us"
+              className="hidden md:flex bg-[#6D2239] hover:bg-[#4D1829] text-white font-semibold px-6 py-2 rounded-lg transition-colors"
             >
-              <Link href="/contact">Contact Us</Link>
-            </Button>
-
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-              className="hidden md:inline-flex"
-              data-testid="button-theme-toggle"
-            >
-              {theme === "light" ? (
-                <Moon className="h-5 w-5" />
-              ) : (
-                <Sun className="h-5 w-5" />
-              )}
-              <span className="sr-only">Toggle theme</span>
+              <Link href="/contact">
+                Contact Us
+              </Link>
             </Button>
 
             {/* Mobile Navigation */}
