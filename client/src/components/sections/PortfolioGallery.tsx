@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { ArrowRight } from 'lucide-react';
 import { Project } from '../../../../shared/types/projects';
-import { ProjectSegment } from '../../../../shared/types/common';
 
 interface PortfolioGalleryProps {
   projects: Project[];
@@ -11,102 +11,58 @@ interface PortfolioGalleryProps {
 interface ProjectCardProps {
   project: Project;
   onClick: (project: Project) => void;
-  style?: React.CSSProperties;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick, style }) => {
-  const [isHovered, setIsHovered] = useState(false);
+const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => {
   const primaryImage = project.images?.[0];
 
   return (
     <div
-      className="relative bg-card rounded-lg shadow-md overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-xl hover:scale-[1.02] touch-manipulation border border-border"
-      style={style}
+      className="group cursor-pointer"
       onClick={() => onClick(project)}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
     >
       {/* Project Image */}
-      <div className="relative overflow-hidden">
+      <div className="relative overflow-hidden rounded-3xl mb-4 aspect-[4/3]">
         {primaryImage ? (
           <img
             src={primaryImage.url}
             alt={primaryImage.alt}
-            className="w-full h-48 sm:h-56 md:h-64 lg:h-48 xl:h-56 object-cover transition-transform duration-300 hover:scale-110"
+            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             loading="lazy"
             decoding="async"
           />
         ) : (
-          <div className="w-full h-48 sm:h-56 md:h-64 lg:h-48 xl:h-56 bg-muted flex items-center justify-center">
-            <span className="text-muted-foreground text-xs sm:text-sm">No Image Available</span>
+          <div className="w-full h-full bg-gray-200 flex items-center justify-center">
+            <span className="text-gray-400 text-sm">No Image Available</span>
           </div>
         )}
         
-        {/* Overlay with project info */}
-        <div
-          className={`absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent transition-opacity duration-300 ${
-            isHovered ? 'opacity-100' : 'opacity-0 sm:opacity-0'
-          } sm:opacity-0 sm:hover:opacity-100`}
-        >
-          <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4 text-white">
-            <h3 className="text-sm sm:text-lg font-semibold mb-1 line-clamp-2">{project.title}</h3>
-            {project.client && (
-              <p className="text-xs sm:text-sm text-gray-200 mb-2">{project.client}</p>
-            )}
-            <div className="flex flex-wrap gap-1 sm:gap-2 mb-2">
-              {project.segment && (
-                <span className="px-2 py-1 bg-white/20 rounded-full text-xs font-medium">
-                  {project.segment}
-                </span>
-              )}
-              {project.location && (
-                <span className="px-2 py-1 bg-white/20 rounded-full text-xs font-medium">
-                  {project.location}
-                </span>
-              )}
-            </div>
-            {project.description && (
-              <p className="text-xs sm:text-sm text-gray-200 line-clamp-2 hidden sm:block">{project.description}</p>
-            )}
-          </div>
-        </div>
-
         {/* Featured badge */}
         {project.isFeatured && (
-          <div className="absolute top-3 right-3">
-            <span className="px-2 py-1 bg-yellow-500 text-white text-xs font-semibold rounded-full">
+          <div className="absolute top-4 right-4">
+            <span className="px-3 py-1.5 bg-primary text-primary-foreground text-xs font-semibold rounded-full shadow-lg">
               Featured
             </span>
           </div>
         )}
       </div>
-
-      {/* Card content (always visible) */}
-      <div className="p-3 sm:p-4">
-        <h3 className="text-base sm:text-lg font-semibold text-card-foreground mb-1 line-clamp-1">
-          {project.title}
-        </h3>
-        {project.client && (
-          <p className="text-xs sm:text-sm text-muted-foreground mb-2">{project.client}</p>
-        )}
-        <div className="flex flex-wrap gap-1 mb-2">
-          {project.segment && (
-            <span className="px-2 py-1 bg-muted text-muted-foreground rounded-full text-xs">
-              {project.segment}
-            </span>
-          )}
-          {project.location && (
-            <span className="px-2 py-1 bg-muted text-muted-foreground rounded-full text-xs">
-              {project.location}
-            </span>
-          )}
-        </div>
-        {project.completedAt && (
-          <p className="text-xs text-muted-foreground">
-            <span className="hidden sm:inline">Completed: </span>
-            {new Date(project.completedAt).toLocaleDateString()}
+      
+      {/* Project Info */}
+      <div className="flex items-center justify-between">
+        <div>
+          <h3 className="text-xl font-semibold text-gray-900 mb-1">
+            {project.title}
+          </h3>
+          <p className="text-sm text-gray-600">
+            {project.segment || project.client || 'Interior Design'}
           </p>
-        )}
+        </div>
+        <button 
+          className="w-10 h-10 rounded-full bg-gray-900 text-white flex items-center justify-center group-hover:bg-primary transition-colors flex-shrink-0"
+          aria-label="View project details"
+        >
+          <ArrowRight className="h-5 w-5" />
+        </button>
       </div>
     </div>
   );
@@ -117,45 +73,11 @@ export const PortfolioGallery: React.FC<PortfolioGalleryProps> = ({
   onProjectClick,
   className = '',
 }) => {
-  const [columns, setColumns] = useState(3);
-
-  // Responsive column calculation
-  useEffect(() => {
-    const updateColumns = () => {
-      const width = window.innerWidth;
-      if (width < 640) {
-        setColumns(1); // Mobile: 1 column
-      } else if (width < 1024) {
-        setColumns(2); // Tablet: 2 columns
-      } else {
-        setColumns(3); // Desktop: 3 columns
-      }
-    };
-
-    updateColumns();
-    window.addEventListener('resize', updateColumns);
-    return () => window.removeEventListener('resize', updateColumns);
-  }, []);
-
-  // Distribute projects across columns for masonry layout
-  const distributeProjects = (projects: Project[], columnCount: number) => {
-    const columnArrays: Project[][] = Array.from({ length: columnCount }, () => []);
-    
-    projects.forEach((project, index) => {
-      const columnIndex = index % columnCount;
-      columnArrays[columnIndex].push(project);
-    });
-    
-    return columnArrays;
-  };
-
-  const projectColumns = distributeProjects(projects, columns);
-
   if (projects.length === 0) {
     return (
       <div className={`text-center py-12 ${className}`}>
-        <div className="text-muted-foreground text-lg mb-2">No projects found</div>
-        <p className="text-muted-foreground text-sm">
+        <div className="text-gray-600 text-lg mb-2">No projects found</div>
+        <p className="text-gray-500 text-sm">
           Try adjusting your filters to see more projects.
         </p>
       </div>
@@ -164,23 +86,8 @@ export const PortfolioGallery: React.FC<PortfolioGalleryProps> = ({
 
   return (
     <div className={`w-full ${className}`}>
-      {/* Desktop and Tablet Masonry Layout */}
-      <div className="hidden sm:flex gap-4">
-        {projectColumns.map((columnProjects, columnIndex) => (
-          <div key={columnIndex} className="flex-1 space-y-4">
-            {columnProjects.map((project) => (
-              <ProjectCard
-                key={project.id}
-                project={project}
-                onClick={onProjectClick}
-              />
-            ))}
-          </div>
-        ))}
-      </div>
-
-      {/* Mobile Single Column Layout */}
-      <div className="sm:hidden space-y-4">
+      {/* Grid Layout - 2 columns on all screen sizes */}
+      <div className="grid md:grid-cols-2 gap-6">
         {projects.map((project) => (
           <ProjectCard
             key={project.id}

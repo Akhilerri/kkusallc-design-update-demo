@@ -37,9 +37,9 @@ export function AwardsSection() {
             AWARDS
           </Badge>
           <h2 className="text-4xl md:text-5xl font-serif font-light text-foreground mb-6">
-            Curve's recent awards
+            Our Recent Awards
             <br />
-            and <span className="text-primary font-normal">achievement</span>
+            and <span className="text-primary font-normal">Achievements</span>
           </h2>
           <div className="w-32 h-1 bg-primary mx-auto mb-8 rounded-full" />
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">

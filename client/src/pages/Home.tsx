@@ -1,16 +1,16 @@
 
 import { Link } from "wouter";
 import { Hero } from "@/components/Hero";
+import { BrandLogos } from "@/components/BrandLogos";
 import { AboutSection } from "@/components/AboutSection";
 import { ProcessSection } from "@/components/ProcessSection";
 import { ProjectsGallery } from "@/components/ProjectsGallery";
-import { EventsSection } from "@/components/EventsSection";
 import { TestimonialsSection } from "@/components/TestimonialsSection";
+import { CTASection } from "@/components/CTASection";
 import { AwardsSection } from "@/components/AwardsSection";
-import { QuoteForm } from "@/components/QuoteForm";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowRight, Building2, Palette, Package, FolderOpen, Settings, BookOpen, Phone } from "lucide-react";
+import { ArrowRight, Building2, FolderOpen, Phone } from "lucide-react";
 import { useHomeSEO } from "@/hooks/useSEO";
 
 // Quick navigation cards for main sections
@@ -51,6 +51,7 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <BrandLogos />
       
       {/* Quick Navigation Section */}
       <section className="section-spacing bg-muted/50">
@@ -94,10 +95,9 @@ export default function Home() {
       <AboutSection />
       <ProcessSection />
       <ProjectsGallery />
-      <EventsSection />
       <TestimonialsSection />
+      <CTASection />
       <AwardsSection />
-      <QuoteForm />
     </>
   );
 }

@@ -53,7 +53,7 @@ const BlogPostCard: React.FC<BlogPostCardProps> = ({ post }) => {
 
   return (
     <article 
-      className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 cursor-pointer group touch-manipulation"
+      className="bg-card rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 cursor-pointer group touch-manipulation border-2 border-card-border hover:border-primary/30"
       onClick={handleClick}
     >
       {/* Featured Image */}
@@ -62,34 +62,34 @@ const BlogPostCard: React.FC<BlogPostCardProps> = ({ post }) => {
           <img
             src={post.featuredImage.url}
             alt={post.featuredImage.alt}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
             loading="lazy"
             decoding="async"
           />
         </div>
       )}
 
-      <div className="p-4 sm:p-6">
+      <div className="p-5 sm:p-6">
         {/* Category Badge */}
-        <div className="flex items-center gap-2 mb-3">
-          <span className="inline-block px-3 py-1 text-xs font-medium text-teal-700 bg-teal-100 rounded-full">
+        <div className="flex items-center gap-2 mb-4">
+          <span className="inline-block px-3 py-1.5 text-xs font-semibold bg-primary text-primary-foreground rounded-full">
             {post.category}
           </span>
           {post.readingTime && (
-            <span className="text-xs text-gray-500">
+            <span className="text-xs text-muted-foreground">
               {post.readingTime} min read
             </span>
           )}
         </div>
 
         {/* Title */}
-        <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-3 group-hover:text-teal-600 transition-colors duration-200 leading-tight">
+        <h3 className="text-lg sm:text-xl font-serif font-semibold text-card-foreground mb-3 group-hover:text-primary transition-colors duration-300 leading-tight">
           {post.title}
         </h3>
 
         {/* Excerpt */}
         {post.excerpt && (
-          <p className="text-sm sm:text-base text-gray-600 mb-4 line-clamp-3">
+          <p className="text-sm sm:text-base text-muted-foreground mb-4 line-clamp-3 leading-relaxed">
             {post.excerpt}
           </p>
         )}
@@ -100,13 +100,13 @@ const BlogPostCard: React.FC<BlogPostCardProps> = ({ post }) => {
             {post.tags.slice(0, 3).map((tag) => (
               <span
                 key={tag}
-                className="inline-block px-2 py-1 text-xs text-gray-600 bg-gray-100 rounded hover:bg-gray-200 transition-colors duration-200"
+                className="inline-block px-3 py-1 text-xs text-muted-foreground bg-secondary rounded-full hover:bg-primary hover:text-primary-foreground transition-colors duration-300"
               >
                 {tag}
               </span>
             ))}
             {post.tags.length > 3 && (
-              <span className="text-xs text-gray-500">
+              <span className="text-xs text-muted-foreground">
                 +{post.tags.length - 3} more
               </span>
             )}
@@ -114,9 +114,9 @@ const BlogPostCard: React.FC<BlogPostCardProps> = ({ post }) => {
         )}
 
         {/* Author and Date */}
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-0 text-xs sm:text-sm text-gray-500">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-0 text-xs sm:text-sm text-muted-foreground">
           <div className="flex items-center">
-            <span className="font-medium text-gray-700">{post.author}</span>
+            <span className="font-medium text-card-foreground">{post.author}</span>
           </div>
           <time dateTime={post.publishedAt?.toISOString()}>
             {post.publishedAt && formatDate(post.publishedAt)}
@@ -125,7 +125,7 @@ const BlogPostCard: React.FC<BlogPostCardProps> = ({ post }) => {
 
         {/* View Count */}
         {post.viewCount && (
-          <div className="mt-2 text-xs text-gray-400">
+          <div className="mt-2 text-xs text-muted-foreground">
             {post.viewCount.toLocaleString()} views
           </div>
         )}

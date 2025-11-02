@@ -10,7 +10,7 @@ interface SEOProps extends UseSEOOptions {
  * @example
  * <SEO 
  *   metadata={{
- *     title: "About Us - Curve Hospitality",
+ *     title: "About Us - KK USA LLC",
  *     description: "Learn about our company...",
  *     keywords: ["about", "company", "hospitality"]
  *   }}

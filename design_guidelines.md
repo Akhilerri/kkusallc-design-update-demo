@@ -1,4 +1,4 @@
-# Curve Hospitality Redesign - Design Guidelines
+# KK USA LLC Website - Design Guidelines
 
 ## Design Approach
 **Reference-Based Approach** drawing inspiration from premium hospitality and design platforms (Airbnb, high-end interior design portfolios, boutique hotel websites) combined with modern B2B service aesthetics. The design emphasizes visual storytelling, craftsmanship, and trust-building through elegant presentation.
@@ -11,21 +11,28 @@
 
 ## Color Palette
 
+### Brand Color
+- **Primary Burgundy**: #6D2239 (342° 52% 30%) - Main brand color for CTAs, headers, accents
+
 ### Light Mode
-- **Primary**: 25 15% 25% (Deep charcoal - main text, headers)
-- **Secondary**: 30 8% 45% (Warm gray - supporting text)
-- **Accent**: 200 85% 45% (Refined teal-blue - CTAs, links, highlights)
-- **Background**: 0 0% 98% (Soft off-white)
+- **Primary**: 342 52% 30% (Burgundy - CTAs, links, brand elements)
+- **Foreground**: 342 30% 20% (Deep burgundy-brown - main text, headers)
+- **Secondary**: 30 8% 93% (Warm cream - secondary backgrounds)
+- **Muted**: 30 8% 90% (Light warm gray - muted elements)
+- **Accent**: 25 45% 88% (Warm beige - subtle accents)
+- **Background**: 30 15% 98% (Soft warm white)
 - **Surface**: 0 0% 100% (Pure white - cards, panels)
-- **Border**: 0 0% 88% (Light gray - subtle dividers)
+- **Border**: 30 10% 88% (Warm light gray - subtle dividers)
 
 ### Dark Mode
-- **Primary**: 0 0% 95% (Soft white - main text)
-- **Secondary**: 0 0% 70% (Light gray - supporting text)
-- **Accent**: 200 75% 55% (Brightened teal-blue - CTAs)
-- **Background**: 220 15% 8% (Rich dark blue-black)
-- **Surface**: 220 12% 12% (Elevated dark gray)
-- **Border**: 220 10% 20% (Subtle dark borders)
+- **Primary**: 342 52% 45% (Lighter burgundy - CTAs, links)
+- **Foreground**: 30 10% 95% (Soft warm white - main text)
+- **Secondary**: 342 10% 18% (Dark burgundy-gray - secondary backgrounds)
+- **Muted**: 342 8% 16% (Dark muted burgundy)
+- **Accent**: 342 10% 15% (Deep burgundy - subtle accents)
+- **Background**: 342 15% 8% (Rich burgundy-black)
+- **Surface**: 342 12% 12% (Elevated dark burgundy-gray)
+- **Border**: 342 10% 20% (Subtle dark burgundy borders)
 
 ## Typography
 
@@ -123,7 +130,7 @@ Primary spacing units: **4, 6, 8, 12, 16, 20, 24, 32**
 
 1. **Hero Section**: 
    - Full-width, high-quality hotel interior or luxury furniture showcase
-   - Professional photography showing Curve's work
+   - Professional photography showing KK USA LLC's work
    - Dimensions: 1920x1080 minimum
    - Placement: Background with dark overlay (bg-black/40)
 

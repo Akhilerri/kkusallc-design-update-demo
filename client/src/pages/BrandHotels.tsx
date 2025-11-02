@@ -67,34 +67,34 @@ export default function BrandHotels() {
         </section>
 
         {/* Hotel Brands Grid */}
-        <section className="py-16 sm:py-24">
+        <section className="py-20 md:py-32">
           <div className="max-w-7xl mx-auto px-6 md:px-8">
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {hotelBrands.map((brand) => (
-                <Card key={brand.name} className="hover:shadow-lg transition-shadow">
-                  <CardHeader>
-                    <div className="flex items-start justify-between mb-4">
-                      <div className="p-3 bg-primary/10 rounded-lg">
-                        <Building2 className="h-8 w-8 text-primary" />
+                <Card key={brand.name} className="group cursor-pointer border-2 hover:border-primary/30">
+                  <CardHeader className="pb-4">
+                    <div className="flex items-start justify-between mb-5">
+                      <div className="p-4 bg-primary/10 rounded-2xl group-hover:bg-primary/20 transition-all duration-300 group-hover:scale-110">
+                        <Building2 className="h-10 w-10 text-primary" />
                       </div>
                       <a
                         href={brand.website}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-muted-foreground hover:text-primary transition-colors"
+                        className="text-muted-foreground hover:text-primary transition-colors duration-300"
                       >
                         <ExternalLink className="h-5 w-5" />
                       </a>
                     </div>
-                    <CardTitle className="text-2xl">{brand.name}</CardTitle>
-                    <p className="text-sm text-muted-foreground">{brand.description}</p>
+                    <CardTitle className="text-2xl font-serif font-bold group-hover:text-primary transition-colors duration-300">{brand.name}</CardTitle>
+                    <p className="text-sm text-muted-foreground leading-relaxed mt-2">{brand.description}</p>
                   </CardHeader>
                   <CardContent>
-                    <div className="space-y-3">
-                      <div className="text-sm font-medium">Brand Portfolio:</div>
+                    <div className="space-y-4">
+                      <div className="text-sm font-semibold text-foreground">Brand Portfolio:</div>
                       <div className="flex flex-wrap gap-2">
                         {brand.brands.map((subBrand) => (
-                          <Badge key={subBrand} variant="secondary" className="text-xs">
+                          <Badge key={subBrand} variant="secondary" className="text-xs px-3 py-1 hover:bg-primary hover:text-primary-foreground transition-colors duration-300">
                             {subBrand}
                           </Badge>
                         ))}
@@ -108,17 +108,17 @@ export default function BrandHotels() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-16 sm:py-24 bg-muted/50">
+        <section className="py-20 md:py-32 bg-muted/50">
           <div className="max-w-4xl mx-auto px-6 md:px-8 text-center">
-            <h2 className="text-3xl sm:text-4xl font-serif font-light mb-6">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-light mb-6">
               Ready to Work Together?
             </h2>
-            <p className="text-lg text-muted-foreground mb-8">
+            <p className="text-lg sm:text-xl text-muted-foreground mb-10 leading-relaxed">
               Contact us to discuss your hotel FF&E requirements and learn how we can support your project.
             </p>
             <a
               href="/contact"
-              className="inline-flex items-center justify-center rounded-md bg-primary px-8 py-3 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-colors"
+              className="inline-flex items-center justify-center rounded-lg bg-primary px-10 py-4 text-base font-semibold text-primary-foreground hover:bg-primary/90 transition-all duration-300 hover:-translate-y-1 shadow-lg hover:shadow-xl"
             >
               Get in Touch
             </a>

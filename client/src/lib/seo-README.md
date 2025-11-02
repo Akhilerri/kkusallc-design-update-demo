@@ -1,6 +1,6 @@
 # SEO Implementation
 
-This directory contains a comprehensive SEO implementation for the Curve Hospitality website.
+This directory contains a comprehensive SEO implementation for the KK USA LLC website.
 
 ## Features
 
@@ -86,7 +86,7 @@ function MyPage() {
     <>
       <SEO 
         metadata={{
-          title: "My Page - Curve Hospitality",
+          title: "My Page - KK USA LLC",
           description: "Page description",
           keywords: ["keyword1", "keyword2"]
         }}

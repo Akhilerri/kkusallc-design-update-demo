@@ -35,35 +35,35 @@ export function ServiceOverviewGrid({ services, onServiceClick, className }: Ser
         return (
           <Card 
             key={service.id}
-            className="group cursor-pointer transition-all duration-300 hover:shadow-lg hover:-translate-y-1 border-2 hover:border-primary/20"
+            className="group cursor-pointer transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 border-2 hover:border-primary/30"
             onClick={() => onServiceClick?.(service)}
           >
             <CardHeader className="text-center pb-4">
-              <div className="mx-auto mb-4 p-3 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                <IconComponent className="h-8 w-8 text-primary" />
+              <div className="mx-auto mb-5 p-4 rounded-2xl bg-primary/10 group-hover:bg-primary/20 transition-all duration-300 group-hover:scale-110">
+                <IconComponent className="h-10 w-10 text-primary" />
               </div>
-              <CardTitle className="text-xl font-bold group-hover:text-primary transition-colors">
+              <CardTitle className="text-xl font-serif font-bold group-hover:text-primary transition-colors duration-300">
                 {service.title}
               </CardTitle>
             </CardHeader>
             
             <CardContent className="pt-0">
-              <CardDescription className="text-center mb-6 min-h-[3rem] flex items-center">
+              <CardDescription className="text-center mb-6 min-h-[3rem] flex items-center leading-relaxed">
                 {service.description || defaultDescription}
               </CardDescription>
               
               {service.capabilities && service.capabilities.length > 0 && (
                 <div className="mb-6">
-                  <h4 className="font-semibold text-sm mb-2 text-foreground">Key Capabilities:</h4>
-                  <ul className="text-sm text-muted-foreground space-y-1">
+                  <h4 className="font-semibold text-sm mb-3 text-foreground">Key Capabilities:</h4>
+                  <ul className="text-sm text-muted-foreground space-y-2">
                     {service.capabilities.slice(0, 3).map((capability, index) => (
                       <li key={index} className="flex items-start">
-                        <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 mr-2 flex-shrink-0" />
+                        <span className="w-2 h-2 bg-primary rounded-full mt-1.5 mr-3 flex-shrink-0" />
                         {capability}
                       </li>
                     ))}
                     {service.capabilities.length > 3 && (
-                      <li className="text-xs text-muted-foreground/70 italic">
+                      <li className="text-xs text-muted-foreground/70 italic pl-5">
                         +{service.capabilities.length - 3} more capabilities
                       </li>
                     )}
@@ -73,10 +73,10 @@ export function ServiceOverviewGrid({ services, onServiceClick, className }: Ser
               
               <Button 
                 variant="outline" 
-                className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-all"
+                className="w-full border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
               >
                 Learn More
-                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
               </Button>
             </CardContent>
           </Card>

@@ -1,98 +1,95 @@
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Mail, ArrowUpRight } from "lucide-react";
-// High-quality luxury hotel room image - elegant upscale hotel bedroom with premium FF&E
-const heroImage = "https://images.unsplash.com/photo-1590490360182-c33d57733427?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80";
-const heroImageFallback = "https://images.unsplash.com/photo-1618773928121-c32242e63f39?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80";
+import { ArrowUpRight, ChevronDown } from "lucide-react";
+import { Link } from "wouter";
+
+// High-quality luxury hotel room images - elegant upscale hotel bedrooms with premium FF&E
+const heroImages = [
+  "https://images.unsplash.com/photo-1590490360182-c33d57733427?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+  "https://images.unsplash.com/photo-1618773928121-c32242e63f39?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+  "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+];
 
 export function Hero() {
   return (
-    <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-background">
-      <div className="max-w-7xl mx-auto px-6 md:px-8 py-12 sm:py-16">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-          <div className="space-y-6 sm:space-y-8">
-            <Badge className="inline-flex items-center gap-2 bg-primary/10 text-primary border-primary/20 hover:bg-primary/20">
-              <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-              CUSTOM FF&E NOW AVAILABLE
-            </Badge>
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Background Image with Overlay */}
+      <div className="absolute inset-0 z-0">
+        <img
+          src={heroImages[0]}
+          alt="Luxury hotel room with premium FF&E furnishings"
+          className="w-full h-full object-cover"
+          loading="eager"
+          onError={(e) => {
+            e.currentTarget.src = heroImages[1];
+          }}
+        />
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/50 to-black/40" />
+        <div className="absolute inset-0 bg-primary/10" />
+      </div>
 
-            <div>
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-light text-foreground mb-4 sm:mb-6 leading-[1.1]">
-                Premium FF&E Solutions for
-                <br className="hidden sm:block" />
-                <span className="text-primary font-normal">Hospitality Excellence</span>
-              </h1>
-
-              <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-xl leading-relaxed">
-                Your trusted supplier of Furniture, Fixtures & Equipment for hotels. 
-                We source and supply quality FF&E to bring your hotel vision to life, 
-                working with leading brands like Hilton, IHG, and Marriott.
-              </p>
-            </div>
-
-            {/* Desktop Buttons */}
-            <div className="hidden sm:flex flex-row items-center gap-4">
-              <Button size="lg" asChild data-testid="button-get-in-touch">
-                <a href="#quote">Get in Touch</a>
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                asChild
-                data-testid="button-view-work"
-              >
-                <a href="/portfolio">View Our Work</a>
-              </Button>
-            </div>
-
-            {/* Mobile CTA Section */}
-            <div className="flex sm:hidden flex-col gap-4 w-full max-w-sm mx-auto">
-              {/* View Our Work Button */}
-              <Button
-                size="lg"
-                variant="outline"
-                asChild
-                data-testid="button-view-work-mobile"
-                className="w-full border-gray-300 dark:border-gray-600"
-              >
-                <a href="/portfolio" className="flex items-center justify-center">View Our Work</a>
-              </Button>
-              
-              {/* GET STARTED Button */}
-              <Button
-                size="lg"
-                asChild
-                className="bg-[#6D2239] hover:bg-[#4D1829] text-white font-bold py-4 px-8 rounded-xl w-full flex items-center justify-center gap-2 transition-colors"
-                data-testid="button-get-started-mobile"
-              >
-                <a href="#quote" className="flex items-center gap-2">
-                  GET STARTED
-                  <ArrowUpRight className="h-5 w-5" />
-                </a>
-              </Button>
-            </div>
-
-            <div className="pt-8 border-t border-border">
-              <p className="text-base sm:text-lg text-muted-foreground mb-4">
-                Trusted by <span className="text-primary font-semibold">1,000+</span> companies and customers
-              </p>
-            </div>
+      {/* Content */}
+      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-8 lg:px-12 py-20 text-center">
+        <div className="max-w-4xl mx-auto space-y-8 animate-fade-in-up">
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-sm font-medium animate-fade-in">
+            <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
+            FF&E Supplier for Branded Hotels
           </div>
 
-          <div className="relative">
-            <div className="relative rounded-lg overflow-hidden shadow-2xl">
-              <img
-                src={heroImage}
-                alt="Luxury hotel room with premium FF&E furnishings"
-                className="w-full h-full object-cover"
-                loading="eager"
-                onError={(e) => {
-                  e.currentTarget.src = heroImageFallback;
-                }}
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-            </div>
+          {/* Main Heading */}
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-serif font-light text-white leading-[1.1] tracking-tight">
+            Furnishing Hotel
+            <br />
+            <span className="font-normal">Excellence</span>
+          </h1>
+
+          {/* Subheading */}
+          <p className="text-lg sm:text-xl md:text-2xl text-white/90 max-w-2xl mx-auto leading-relaxed font-light">
+            Premium FF&E solutions for Hilton, IHG, Marriott, and Choice Hotels
+          </p>
+
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+            <Button
+              asChild
+              size="lg"
+              className="bg-primary hover:bg-primary/90 text-white font-semibold px-8 py-6 rounded-full text-base transition-all duration-300 hover:shadow-2xl hover:scale-105 min-w-[200px]"
+              data-testid="button-get-started"
+            >
+              <Link href="/contact" className="flex items-center gap-2">
+                Get Started
+                <ArrowUpRight className="h-5 w-5" />
+              </Link>
+            </Button>
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
+              className="border-2 border-white/30 bg-white/10 backdrop-blur-md hover:bg-white/20 text-white font-semibold px-8 py-6 rounded-full text-base transition-all duration-300 hover:border-white/50 min-w-[200px]"
+              data-testid="button-view-projects"
+            >
+              <Link href="/portfolio">View Projects</Link>
+            </Button>
           </div>
+
+          {/* Trust Indicator */}
+          <div className="pt-12 flex items-center justify-center gap-2 text-white/80 text-sm">
+            <div className="flex -space-x-2">
+              <div className="w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm border-2 border-white/30" />
+              <div className="w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm border-2 border-white/30" />
+              <div className="w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm border-2 border-white/30" />
+            </div>
+            <span className="font-medium">Trusted by 50+ hotel properties</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce-subtle">
+        <div className="flex flex-col items-center gap-2 text-white/60 hover:text-white/90 transition-colors cursor-pointer">
+          <span className="text-xs font-medium tracking-wider uppercase">Scroll</span>
+          <ChevronDown className="h-5 w-5" />
         </div>
       </div>
     </section>

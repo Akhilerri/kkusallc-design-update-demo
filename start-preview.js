@@ -8,7 +8,7 @@ import { readFileSync, writeFileSync } from 'fs';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-console.log('🚀 Starting Curve Hospitality Business Website Preview...');
+console.log('🚀 Starting KK USA LLC Business Website Preview...');
 console.log('📍 Mode: Preview (using mock data)');
 console.log('🌐 URL: http://localhost:3000');
 

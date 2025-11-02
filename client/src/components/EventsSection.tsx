@@ -45,7 +45,7 @@ export function EventsSection() {
             Upcoming Events
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            We cordially invite you to meet the esteemed members of our Curve
+            We cordially invite you to meet the esteemed members of our
             team at various upcoming FF&E industry events.
           </p>
         </div>

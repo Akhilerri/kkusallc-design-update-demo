@@ -90,13 +90,13 @@ export const ContactForm: React.FC<ContactFormProps> = ({ onSuccess, className =
   if (submitted) {
     return (
       <Card className={className}>
-        <CardContent className="p-8 text-center">
-          <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-4" />
-          <h3 className="text-xl font-semibold mb-2">Thank you for your message!</h3>
-          <p className="text-muted-foreground mb-6">
+        <CardContent className="p-10 sm:p-12 text-center">
+          <CheckCircle className="h-20 w-20 text-primary mx-auto mb-6" />
+          <h3 className="text-2xl sm:text-3xl font-serif font-bold mb-3">Thank you for your message!</h3>
+          <p className="text-muted-foreground text-base sm:text-lg mb-8 leading-relaxed">
             We've received your inquiry and will get back to you within 24 hours during business days.
           </p>
-          <Button onClick={handleReset} variant="outline">
+          <Button onClick={handleReset} variant="outline" size="lg" className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground">
             Send Another Message
           </Button>
         </CardContent>
@@ -106,48 +106,48 @@ export const ContactForm: React.FC<ContactFormProps> = ({ onSuccess, className =
 
   return (
     <Card className={className}>
-      <CardHeader className="p-4 sm:p-6">
-        <CardTitle className="flex items-center gap-2 text-lg sm:text-xl">
-          <Send className="h-4 w-4 sm:h-5 sm:w-5" />
+      <CardHeader className="p-6 sm:p-8">
+        <CardTitle className="flex items-center gap-3 text-2xl sm:text-3xl font-serif font-bold">
+          <Send className="h-6 w-6 sm:h-7 sm:w-7 text-primary" />
           Get in Touch
         </CardTitle>
-        <p className="text-muted-foreground text-sm sm:text-base">
+        <p className="text-muted-foreground text-base sm:text-lg mt-3 leading-relaxed">
           Ready to start your project? Fill out the form below and we'll get back to you soon.
         </p>
       </CardHeader>
-      <CardContent className="p-4 sm:p-6">
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 sm:space-y-6">
+      <CardContent className="p-6 sm:p-8">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 sm:space-y-8">
           {/* Basic Information */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className="space-y-2">
-              <Label htmlFor="name" className="text-sm font-medium">Name *</Label>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div className="space-y-3">
+              <Label htmlFor="name" className="text-sm font-semibold uppercase tracking-wider">Name *</Label>
               <Input
                 id="name"
                 {...register('name')}
                 placeholder="Your full name"
-                className={`h-11 ${errors.name ? 'border-red-500 focus:border-red-500' : touchedFields.name && !errors.name ? 'border-green-500' : ''}`}
+                className={`h-12 border-2 transition-all duration-300 ${errors.name ? 'border-destructive focus:border-destructive' : touchedFields.name && !errors.name ? 'border-primary' : 'focus:border-primary'}`}
                 onBlur={() => trigger('name')}
               />
               {errors.name && (
-                <p className="text-xs text-red-500 flex items-center gap-1">
+                <p className="text-xs text-destructive flex items-center gap-1">
                   <AlertCircle className="h-3 w-3" />
                   {errors.name.message}
                 </p>
               )}
             </div>
 
-            <div className="space-y-2">
-              <Label htmlFor="phone" className="text-sm font-medium">Phone Number *</Label>
+            <div className="space-y-3">
+              <Label htmlFor="phone" className="text-sm font-semibold uppercase tracking-wider">Phone Number *</Label>
               <Input
                 id="phone"
                 type="tel"
                 {...register('phone')}
                 placeholder="(555) 123-4567"
-                className={`h-11 ${errors.phone ? 'border-red-500 focus:border-red-500' : touchedFields.phone && !errors.phone ? 'border-green-500' : ''}`}
+                className={`h-12 border-2 transition-all duration-300 ${errors.phone ? 'border-destructive focus:border-destructive' : touchedFields.phone && !errors.phone ? 'border-primary' : 'focus:border-primary'}`}
                 onBlur={() => trigger('phone')}
               />
               {errors.phone && (
-                <p className="text-xs text-red-500 flex items-center gap-1">
+                <p className="text-xs text-destructive flex items-center gap-1">
                   <AlertCircle className="h-3 w-3" />
                   {errors.phone.message}
                 </p>
@@ -155,36 +155,36 @@ export const ContactForm: React.FC<ContactFormProps> = ({ onSuccess, className =
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className="space-y-2">
-              <Label htmlFor="email" className="text-sm font-medium">Email *</Label>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div className="space-y-3">
+              <Label htmlFor="email" className="text-sm font-semibold uppercase tracking-wider">Email *</Label>
               <Input
                 id="email"
                 type="email"
                 {...register('email')}
                 placeholder="your.email@example.com"
-                className={`h-11 ${errors.email ? 'border-red-500 focus:border-red-500' : touchedFields.email && !errors.email ? 'border-green-500' : ''}`}
+                className={`h-12 border-2 transition-all duration-300 ${errors.email ? 'border-destructive focus:border-destructive' : touchedFields.email && !errors.email ? 'border-primary' : 'focus:border-primary'}`}
                 onBlur={() => trigger('email')}
               />
               {errors.email && (
-                <p className="text-xs text-red-500 flex items-center gap-1">
+                <p className="text-xs text-destructive flex items-center gap-1">
                   <AlertCircle className="h-3 w-3" />
                   {errors.email.message}
                 </p>
               )}
             </div>
 
-            <div className="space-y-2">
-              <Label htmlFor="message" className="text-sm font-medium">Subject *</Label>
+            <div className="space-y-3">
+              <Label htmlFor="message" className="text-sm font-semibold uppercase tracking-wider">Subject *</Label>
               <Input
                 id="subject"
                 {...register('message')}
                 placeholder="What can we help you with?"
-                className={`h-11 ${errors.message ? 'border-red-500 focus:border-red-500' : touchedFields.message && !errors.message ? 'border-green-500' : ''}`}
+                className={`h-12 border-2 transition-all duration-300 ${errors.message ? 'border-destructive focus:border-destructive' : touchedFields.message && !errors.message ? 'border-primary' : 'focus:border-primary'}`}
                 onBlur={() => trigger('message')}
               />
               {errors.message && (
-                <p className="text-xs text-red-500 flex items-center gap-1">
+                <p className="text-xs text-destructive flex items-center gap-1">
                   <AlertCircle className="h-3 w-3" />
                   {errors.message.message}
                 </p>
@@ -193,11 +193,11 @@ export const ContactForm: React.FC<ContactFormProps> = ({ onSuccess, className =
           </div>
 
           {/* Office Email Display */}
-          <div className="p-4 bg-muted/50 rounded-lg border border-border">
-            <div className="flex items-center gap-2 text-sm">
-              <Mail className="h-4 w-4 text-primary" />
-              <span className="font-medium">Our Office Email:</span>
-              <a href="mailto:office@kkusallc.com" className="text-primary hover:underline">
+          <div className="p-5 bg-primary/5 rounded-xl border-2 border-primary/20">
+            <div className="flex items-center gap-3 text-sm sm:text-base">
+              <Mail className="h-5 w-5 text-primary flex-shrink-0" />
+              <span className="font-semibold">Our Office Email:</span>
+              <a href="mailto:office@kkusallc.com" className="text-primary hover:underline font-medium">
                 office@kkusallc.com
               </a>
             </div>
@@ -215,23 +215,23 @@ export const ContactForm: React.FC<ContactFormProps> = ({ onSuccess, className =
           <Button
             type="submit"
             disabled={submitting}
-            className="w-full"
+            className="w-full h-14 text-base font-semibold transition-all duration-300 hover:-translate-y-1 shadow-lg hover:shadow-xl"
             size="lg"
           >
             {submitting ? (
               <>
-                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                <Loader2 className="mr-2 h-5 w-5 animate-spin" />
                 Sending Message...
               </>
             ) : (
               <>
-                <Send className="mr-2 h-4 w-4" />
+                <Send className="mr-2 h-5 w-5" />
                 Send Message
               </>
             )}
           </Button>
 
-          <p className="text-xs text-muted-foreground text-center">
+          <p className="text-xs sm:text-sm text-muted-foreground text-center leading-relaxed">
             By submitting this form, you agree to our privacy policy and terms of service.
           </p>
         </form>

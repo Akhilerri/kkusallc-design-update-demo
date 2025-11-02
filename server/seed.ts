@@ -21,9 +21,9 @@ export async function seedDatabase() {
     const [company] = await db
       .insert(companies)
       .values({
-        name: "Curve Hospitality Design",
-        description: "Premier interior design and manufacturing company specializing in hospitality and commercial spaces.",
-        foundedYear: 2015,
+        name: "KK USA LLC",
+        description: "Trusted FF&E supplier specializing in quality Furniture, Fixtures & Equipment for hotels.",
+        foundedYear: 2010,
         mission: "To create exceptional spaces that inspire and elevate the human experience through innovative design and superior craftsmanship.",
         values: [
           "Innovation in design and manufacturing",

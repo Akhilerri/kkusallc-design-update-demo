@@ -10,7 +10,7 @@ export function TestimonialsSection() {
     {
       id: 1,
       quote:
-        "We are always successful when Curve is the design firm partnered with us. As a national General Contractor, we have had experience working with other hospitality design firms, but we absolutely prefer to work with you over any other.",
+        "We are always successful when KK USA LLC is our FF&E supplier. As a national General Contractor, we have had experience working with other hospitality suppliers, but we absolutely prefer to work with you over any other.",
       author: "Marco Genio",
       role: "General Contractor",
     },
@@ -31,7 +31,7 @@ export function TestimonialsSection() {
     {
       id: 4,
       quote:
-        "My experience with Curve was very positive from the initial meetings with the designer, to the negotiations with management, to the final product delivered to the hotel. Christina had an excellent taste and forward vision.",
+        "My experience with KK USA LLC was very positive from the initial meetings to the negotiations with management, to the final product delivered to the hotel. The team had excellent taste and forward vision.",
       author: "Bruno Cencini",
       role: "Hospitality Executive",
     },

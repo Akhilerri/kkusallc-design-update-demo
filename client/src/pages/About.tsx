@@ -167,11 +167,6 @@ export default function About() {
               </h2>
               <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
                 <p>
-                  Karan Kothari USA LLC is a distinguished hospitality procurement enterprise that is renowned 
-                  for its exceptional standards. Our company operates through domestic and offshore 
-                  manufacturing facilities to deliver an extensive range of high-quality products.
-                </p>
-                <p>
                   We specialize in custom manufacturing of case goods, seating, artwork & mirrors, 
                   lighting, drapery & bedding, stone countertops, bathroom fixtures & vanities, 
                   carpets, and tiles. At Karan Kothari USA LLC, we ensure that all client needs and 

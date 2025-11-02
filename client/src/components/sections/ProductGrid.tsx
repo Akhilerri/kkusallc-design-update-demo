@@ -133,20 +133,20 @@ function ProductCard({ product, onClick, viewMode = 'grid' }: ProductCardProps) 
   }
 
   return (
-    <Card className="cursor-pointer hover:shadow-md transition-all duration-200 hover:scale-[1.02]">
-      <CardContent className="p-4">
+    <Card className="cursor-pointer group border-2 hover:border-primary/30">
+      <CardContent className="p-5">
         {/* Image */}
-        <div className="mb-4">
+        <div className="mb-5">
           <AspectRatio ratio={4/3}>
             {primaryImage && !imageError ? (
-              <div className="relative w-full h-full">
+              <div className="relative w-full h-full overflow-hidden rounded-xl">
                 {!imageLoaded && (
-                  <Skeleton className="absolute inset-0 rounded-md" />
+                  <Skeleton className="absolute inset-0 rounded-xl" />
                 )}
                 <img
                   src={primaryImage.url}
                   alt={primaryImage.alt || product.name}
-                  className={`w-full h-full object-cover rounded-md transition-opacity duration-200 ${
+                  className={`w-full h-full object-cover transition-all duration-700 group-hover:scale-110 ${
                     imageLoaded ? 'opacity-100' : 'opacity-0'
                   }`}
                   onLoad={() => setImageLoaded(true)}
@@ -154,7 +154,7 @@ function ProductCard({ product, onClick, viewMode = 'grid' }: ProductCardProps) 
                 />
               </div>
             ) : (
-              <div className="w-full h-full bg-muted rounded-md flex items-center justify-center">
+              <div className="w-full h-full bg-muted rounded-xl flex items-center justify-center">
                 <Package className="h-12 w-12 text-muted-foreground" />
               </div>
             )}
@@ -162,11 +162,11 @@ function ProductCard({ product, onClick, viewMode = 'grid' }: ProductCardProps) 
         </div>
         
         {/* Content */}
-        <div className="space-y-2">
+        <div className="space-y-3">
           <div className="flex items-start justify-between">
-            <h3 className="font-semibold text-lg line-clamp-2 flex-1">{product.name}</h3>
+            <h3 className="font-serif font-semibold text-lg line-clamp-2 flex-1">{product.name}</h3>
             {product.isFeatured && (
-              <Badge variant="secondary" className="flex items-center gap-1 ml-2">
+              <Badge className="flex items-center gap-1 ml-2 bg-primary text-primary-foreground">
                 <Star className="h-3 w-3" />
                 Featured
               </Badge>
@@ -178,25 +178,25 @@ function ProductCard({ product, onClick, viewMode = 'grid' }: ProductCardProps) 
           )}
           
           {product.description && (
-            <p className="text-sm text-muted-foreground line-clamp-3">
+            <p className="text-sm text-muted-foreground line-clamp-3 leading-relaxed">
               {product.description}
             </p>
           )}
           
           {product.priceRange && (
-            <Badge variant="outline">{product.priceRange}</Badge>
+            <Badge variant="outline" className="border-primary/30">{product.priceRange}</Badge>
           )}
           
           {/* Materials */}
           {product.materials && product.materials.length > 0 && (
-            <div className="flex flex-wrap gap-1">
+            <div className="flex flex-wrap gap-2">
               {product.materials.slice(0, 2).map((material, index) => (
-                <Badge key={index} variant="outline" className="text-xs">
+                <Badge key={index} variant="outline" className="text-xs border-primary/20">
                   {material}
                 </Badge>
               ))}
               {product.materials.length > 2 && (
-                <Badge variant="outline" className="text-xs">
+                <Badge variant="outline" className="text-xs border-primary/20">
                   +{product.materials.length - 2}
                 </Badge>
               )}
@@ -204,11 +204,11 @@ function ProductCard({ product, onClick, viewMode = 'grid' }: ProductCardProps) 
           )}
         </div>
       </CardContent>
-      <CardFooter className="pt-0 px-4 pb-4">
+      <CardFooter className="pt-0 px-5 pb-5">
         <Button 
           variant="outline" 
           size="sm" 
-          className="w-full"
+          className="w-full border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
           onClick={() => onClick(product)}
         >
           <Eye className="h-4 w-4 mr-2" />

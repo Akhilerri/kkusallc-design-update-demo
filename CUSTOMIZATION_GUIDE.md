@@ -27,7 +27,7 @@ The logo appears in two places in `client/src/components/EnhancedNavigation.tsx`
   href="/"
   className="text-2xl font-bold text-primary hover-elevate px-2 py-1 rounded-md"
 >
-  Curve  {/* Replace this */}
+  KK USA LLC  {/* Your company name */}
 </Link>
 ```
 
@@ -37,7 +37,7 @@ The logo appears in two places in `client/src/components/EnhancedNavigation.tsx`
   href="/"
   className="text-2xl font-bold text-blue-600 dark:text-blue-400"
 >
-  CURVE  {/* Replace this */}
+  KK USA LLC  {/* Your company name */}
 </Link>
 ```
 

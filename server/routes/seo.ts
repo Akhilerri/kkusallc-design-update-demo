@@ -48,7 +48,7 @@ router.get('/robots.txt', (req, res) => {
       ],
       crawlDelay: 1,
       customRules: [
-        '# Curve Hospitality - Robots.txt',
+        '# KK USA LLC - Robots.txt',
         '# Generated automatically'
       ]
     });

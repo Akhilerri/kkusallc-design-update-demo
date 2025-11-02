@@ -1,5 +1,5 @@
 @echo off
-echo 🚀 Starting Curve Hospitality Business Website...
+echo 🚀 Starting KK USA LLC Business Website...
 echo 📍 Environment: development
 echo 🌐 URL: http://localhost:3000
 

@@ -155,49 +155,49 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
       />
 
       {/* Modal Content */}
-      <div className="relative bg-card rounded-lg sm:rounded-xl shadow-2xl max-w-6xl w-full max-h-[95vh] sm:max-h-[90vh] overflow-y-auto border border-border">
+      <div className="relative bg-card rounded-2xl shadow-2xl max-w-6xl w-full max-h-[95vh] sm:max-h-[90vh] overflow-y-auto border-2 border-card-border">
         {/* Header */}
-        <div className="sticky top-0 bg-card border-b border-border px-4 sm:px-6 py-3 sm:py-4 flex items-start justify-between">
+        <div className="sticky top-0 bg-card border-b-2 border-border px-4 sm:px-6 py-4 sm:py-5 flex items-start justify-between backdrop-blur-sm bg-card/95">
           <div className="flex-1 min-w-0 pr-4">
-            <h2 className="text-lg sm:text-2xl font-bold text-card-foreground leading-tight">{project.title}</h2>
+            <h2 className="text-xl sm:text-3xl font-serif font-bold text-card-foreground leading-tight">{project.title}</h2>
             {project.client && (
-              <p className="text-sm sm:text-base text-muted-foreground mt-1">{project.client}</p>
+              <p className="text-sm sm:text-base text-muted-foreground mt-2">{project.client}</p>
             )}
           </div>
           <button
             onClick={onClose}
-            className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-muted transition-colors flex-shrink-0"
+            className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-primary/10 transition-all duration-300 flex-shrink-0 hover:scale-110"
           >
-            <X size={20} />
+            <X size={20} className="text-muted-foreground hover:text-primary" />
           </button>
         </div>
 
-        <div className="p-4 sm:p-6">
+        <div className="p-5 sm:p-8">
           {/* Project Meta Information */}
-          <div className="flex flex-wrap gap-3 sm:gap-4 mb-4 sm:mb-6 text-xs sm:text-sm text-muted-foreground">
+          <div className="flex flex-wrap gap-4 sm:gap-6 mb-6 sm:mb-8 text-sm sm:text-base text-muted-foreground">
             {project.location && (
-              <div className="flex items-center gap-1">
-                <MapPin size={14} className="sm:w-4 sm:h-4" />
+              <div className="flex items-center gap-2">
+                <MapPin size={16} className="sm:w-5 sm:h-5 text-primary" />
                 <span>{project.location}</span>
               </div>
             )}
             {project.segment && (
-              <div className="flex items-center gap-1">
-                <Building size={14} className="sm:w-4 sm:h-4" />
+              <div className="flex items-center gap-2">
+                <Building size={16} className="sm:w-5 sm:h-5 text-primary" />
                 <span className="capitalize">{project.segment}</span>
               </div>
             )}
             {project.completedAt && (
-              <div className="flex items-center gap-1">
-                <Calendar size={14} className="sm:w-4 sm:h-4" />
+              <div className="flex items-center gap-2">
+                <Calendar size={16} className="sm:w-5 sm:h-5 text-primary" />
                 <span className="hidden sm:inline">Completed {new Date(project.completedAt).toLocaleDateString()}</span>
                 <span className="sm:hidden">{new Date(project.completedAt).getFullYear()}</span>
               </div>
             )}
             {project.isFeatured && (
-              <div className="flex items-center gap-1 text-yellow-600">
-                <Star size={14} className="sm:w-4 sm:h-4 fill-current" />
-                <span>Featured</span>
+              <div className="flex items-center gap-2 text-primary">
+                <Star size={16} className="sm:w-5 sm:h-5 fill-current" />
+                <span className="font-medium">Featured</span>
               </div>
             )}
           </div>
@@ -219,11 +219,11 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
             </div>
 
             {/* Right Column - Project Details */}
-            <div className="space-y-4 sm:space-y-6">
+            <div className="space-y-6 sm:space-y-8">
               {/* Description */}
               {project.description && (
                 <div>
-                  <h3 className="text-base sm:text-lg font-semibold text-card-foreground mb-2">Project Overview</h3>
+                  <h3 className="text-lg sm:text-xl font-serif font-bold text-card-foreground mb-3">Project Overview</h3>
                   <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">{project.description}</p>
                 </div>
               )}
@@ -231,12 +231,12 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
               {/* Challenges */}
               {project.challenges && project.challenges.length > 0 && (
                 <div>
-                  <h3 className="text-base sm:text-lg font-semibold text-card-foreground mb-2">Challenges</h3>
-                  <ul className="space-y-2">
+                  <h3 className="text-lg sm:text-xl font-serif font-bold text-card-foreground mb-3">Challenges</h3>
+                  <ul className="space-y-3">
                     {project.challenges.map((challenge, index) => (
-                      <li key={index} className="flex items-start gap-2">
-                        <span className="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0" />
-                        <span className="text-sm sm:text-base text-muted-foreground">{challenge}</span>
+                      <li key={index} className="flex items-start gap-3">
+                        <span className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0" />
+                        <span className="text-sm sm:text-base text-muted-foreground leading-relaxed">{challenge}</span>
                       </li>
                     ))}
                   </ul>
@@ -246,12 +246,12 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
               {/* Solutions */}
               {project.solutions && project.solutions.length > 0 && (
                 <div>
-                  <h3 className="text-base sm:text-lg font-semibold text-card-foreground mb-2">Solutions</h3>
-                  <ul className="space-y-2">
+                  <h3 className="text-lg sm:text-xl font-serif font-bold text-card-foreground mb-3">Solutions</h3>
+                  <ul className="space-y-3">
                     {project.solutions.map((solution, index) => (
-                      <li key={index} className="flex items-start gap-2">
-                        <span className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0" />
-                        <span className="text-sm sm:text-base text-muted-foreground">{solution}</span>
+                      <li key={index} className="flex items-start gap-3">
+                        <span className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0" />
+                        <span className="text-sm sm:text-base text-muted-foreground leading-relaxed">{solution}</span>
                       </li>
                     ))}
                   </ul>
@@ -261,12 +261,12 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
               {/* Results */}
               {project.results && project.results.length > 0 && (
                 <div>
-                  <h3 className="text-base sm:text-lg font-semibold text-card-foreground mb-2">Results</h3>
-                  <ul className="space-y-2">
+                  <h3 className="text-lg sm:text-xl font-serif font-bold text-card-foreground mb-3">Results</h3>
+                  <ul className="space-y-3">
                     {project.results.map((result, index) => (
-                      <li key={index} className="flex items-start gap-2">
-                        <span className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0" />
-                        <span className="text-sm sm:text-base text-muted-foreground">{result}</span>
+                      <li key={index} className="flex items-start gap-3">
+                        <span className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0" />
+                        <span className="text-sm sm:text-base text-muted-foreground leading-relaxed">{result}</span>
                       </li>
                     ))}
                   </ul>
@@ -276,12 +276,12 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
               {/* Tags */}
               {project.tags && project.tags.length > 0 && (
                 <div>
-                  <h3 className="text-lg font-semibold text-card-foreground mb-2">Tags</h3>
+                  <h3 className="text-lg sm:text-xl font-serif font-bold text-card-foreground mb-3">Tags</h3>
                   <div className="flex flex-wrap gap-2">
                     {project.tags.map((tag, index) => (
                       <span
                         key={index}
-                        className="px-3 py-1 bg-muted text-muted-foreground rounded-full text-sm"
+                        className="px-3 py-1.5 bg-secondary text-secondary-foreground rounded-full text-sm hover:bg-primary hover:text-primary-foreground transition-colors duration-300"
                       >
                         {tag}
                       </span>
@@ -294,18 +294,18 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
 
           {/* Testimonial */}
           {project.testimonial && (
-            <div className="mt-8 p-6 bg-muted rounded-lg">
-              <div className="flex items-start gap-4">
-                <Quote size={24} className="text-muted-foreground flex-shrink-0 mt-1" />
+            <div className="mt-10 p-6 sm:p-8 bg-muted/50 rounded-2xl border-2 border-border">
+              <div className="flex items-start gap-4 sm:gap-6">
+                <Quote size={32} className="text-primary flex-shrink-0 mt-1" />
                 <div>
-                  <blockquote className="text-lg text-card-foreground mb-4 italic">
+                  <blockquote className="text-lg sm:text-xl font-serif text-card-foreground mb-6 italic leading-relaxed">
                     "{project.testimonial.quote}"
                   </blockquote>
-                  <div className="flex items-center gap-4">
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6">
                     <div>
-                      <p className="font-semibold text-card-foreground">{project.testimonial.clientName}</p>
+                      <p className="font-semibold text-card-foreground text-base sm:text-lg">{project.testimonial.clientName}</p>
                       {project.testimonial.clientTitle && (
-                        <p className="text-sm text-muted-foreground">
+                        <p className="text-sm text-muted-foreground mt-1">
                           {project.testimonial.clientTitle}
                           {project.testimonial.clientCompany && `, ${project.testimonial.clientCompany}`}
                         </p>
@@ -316,11 +316,11 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
                         {Array.from({ length: 5 }).map((_, i) => (
                           <Star
                             key={i}
-                            size={16}
+                            size={18}
                             className={`${
                               i < project.testimonial!.rating!
-                                ? 'text-yellow-400 fill-current'
-                                : 'text-gray-300'
+                                ? 'text-primary fill-current'
+                                : 'text-muted'
                             }`}
                           />
                         ))}

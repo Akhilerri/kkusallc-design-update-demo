@@ -28,7 +28,7 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 process.env.VITE_BASE_URL = process.env.VITE_BASE_URL || 'http://localhost:5173';
 process.env.DATABASE_URL = process.env.DATABASE_URL || 'file:./dev.db';
 
-console.log('🚀 Starting Curve Hospitality Business Website...');
+console.log('🚀 Starting KK USA LLC Business Website...');
 console.log('📍 Environment: development');
 console.log('🌐 Base URL: http://localhost:5173');
 
